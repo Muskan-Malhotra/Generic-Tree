@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Max{
+class Max{
 
 
   public static class Node{
