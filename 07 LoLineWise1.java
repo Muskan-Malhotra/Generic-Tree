@@ -97,8 +97,8 @@ import java.util.*;
       }
 
       if(Mq.size() == 0){
-        Mq = Cq;
-        Cq = new ArrayDeque<>();
+        Mq = Cq;                    //Make CQ as MQ
+        Cq = new ArrayDeque<>();    //Create new CQ
         System.out.println();
       }
       
