@@ -36,21 +36,25 @@ class PrePostOrder{
   }
 
   public static void PrePost(Node root){
+
+    //Node pre
     System.out.println("Node Pre " + root.data);
 
     for(int i=0;i<root.children.size();i++){
 
       //pre order
       Node child = root.children.get(i);
+
+      //edge pre order
       System.out.println("Edge Pre " + root.data + "--" + child.data);
 
       //call the recurssion [in]
-      PrePost(child);
+      PrePost(child);   //call-->equivalent to edge in tree
 
-      //post order
+      //post order of egde
       System.out.println("Edge Post " + root.data + "--" + child.data);
     }
-
+    //Node Post
     System.out.println("Node Post "+ root.data);
   }
   

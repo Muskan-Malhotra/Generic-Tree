@@ -51,6 +51,7 @@ class construction{
    
     System.out.print(root.data + "->");
 
+    //to print root
     for(int i=0;i<root.children.size();i++){
       Node child = root.children.get(i);
       System.out.print(child.data+",");
@@ -58,6 +59,7 @@ class construction{
     System.out.print(".");
     System.out.println();
 
+    //to print root nodes
     for(int i=0;i<root.children.size();i++){
       Node child = root.children.get(i);
       display(child);

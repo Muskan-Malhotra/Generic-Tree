@@ -1,15 +1,19 @@
 /**
- * 06 LevelOrder
+ * 06 LoLineWise METHOD 1
  */
+
 // ############################ ALGO ###############################
 /**
- * Remove the root from Queue
+ * Remove the root from Main Queue
  * Print root
- * Add Root Children in the Queue
+ * Add Root Children in the Child Queue
+ * When MQ is empty make CQ as MQ
+ * Create new CQ
  */
+
 import java.util.*;
 
- class LevelOrder {
+ class LoLineWise1{
 
   public static class Node{
     int  data;
@@ -20,7 +24,7 @@ import java.util.*;
   public static Node construct(int[] arr){
     //function for constructing the genric tree
 
-    Stack<Node> st = new Stack<>();  //stack for distinguishing the root and its children
+    Stack<Node> st = new Stack<>();  
     int i = 0;
     Node root=null;
 
@@ -33,9 +37,6 @@ import java.util.*;
       else{
         Node n = new Node();        
         n.data = arr[i];            
-        
-        //special case
-        //stack empty
 
         // System.out.println(n);
         if(st.size() == 0){
@@ -73,42 +74,55 @@ import java.util.*;
     }
   }
 
-  // ############################# LEVEL ORDER #############################################//
+  // ############################# LEVEL ORDER LINE WISE 1 #############################################//
 
-  public static void LevelOrder01(Node root){
-    Queue<Node> q =  new ArrayDeque<>();
+  public static void LOLW1(Node root){
+    Queue<Node> Mq = new ArrayDeque<>();
+    Queue<Node> Cq = new ArrayDeque<>();
 
-    
-    //add node in queue
-    q.add(root);
+    Mq.add(root);
 
-    
-    ///ALGO
+    while(Mq.size()>0){
 
-    while(q.size()>0){
-      //remove front node
+      //remove 
+      Node rem = Mq.remove();
 
-      Node rem = q.remove();  //the front ele of queue is removed and got in rem(removed element)
+      // print
+      System.out.print(rem.data+"/");
 
-      //print the node
-      System.out.print(rem.data+" ");
-
-      //add the children of removed node
+      //add children to cq
       for(int i=0;i<rem.children.size();i++){
-        Node remChild = rem.children.get(i);
-        q.add(remChild);
+         Node remchild = rem.children.get(i);
+         Cq.add(remchild);
       }
+
+      if(Mq.size() == 0){
+        Mq = Cq;
+        Cq = new ArrayDeque<>();
+        System.out.println();
+      }
+      
+    
     }
 
-    System.out.println(". ");
+    }
 
-  }
+
   public static void main(String[] args) {
     int[] ar = {10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,100,-1,-1,-1};
 
     Node root = construct(ar);
     // display(root);
-    LevelOrder01(root);
+    LOLW1(root);
   }
   
 }
+
+/* abstract
+*
+10/
+20/30/40/
+50/60/70/80/90/100/
+110/120/
+
+ */
