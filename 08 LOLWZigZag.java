@@ -98,10 +98,11 @@ import java.util.*;
           Cs.push(remChild);
         }
       }
-      lvl++;
+      
       if(Ms.size() == 0){
         Ms = Cs;
         Cs = new Stack<>();
+        lvl++;
         System.out.println();
       }
       

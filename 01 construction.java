@@ -1,5 +1,6 @@
 import java.util.*;
 
+// run---> java "01 construction.java"
 class construction{
 
   //Node class constructor for data and children of Nodes
