@@ -6,8 +6,8 @@
 /**
  * Remove the root from Main Queue
  * Print root
- * Add Root Children in the Child Queue
- * When MQ is empty make CQ as MQ
+ * Add Root Children in the Child Queue ---> L to R for odd && R to L for even
+ * When MQ is empty make MQ as CQ
  * Create new CQ
  */
 
