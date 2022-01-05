@@ -4,8 +4,15 @@
 
 // ############################ ALGO ###############################
 /**
+ * Faith: children will mirror their children
+ * Expectation: Meet faith with expectation making their changes in root
+ * ===========================================================================
+ * Before call: get the children
+ * Call function
+ * After call: Reverse the arraylist by actually changing the nodes completely.
  * 
  */
+
 import java.util.*;
 
 class Mirror {
