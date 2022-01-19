@@ -13,6 +13,7 @@
  * int lo=0;hi=al.size()-1; left = Al.get(lo), right = Al.get(hi); Al.set(lo,left), Al.set(hi,right);
  */
 
+import java.lang.reflect.Method;
 import java.util.*;
 
 class Mirror {
@@ -68,6 +69,10 @@ class Mirror {
 
   public static void mirror(Node root){
 
+    // Method
+    // 1) left : 20 right: 40
+    // 2) Complete node is swapped and not just the data 40 --> 100 with is swapped
+
     //reversing the array list
     int lo = 0;
     int hi = root.children.size()-1;
@@ -76,6 +81,8 @@ class Mirror {
       Node left = root.children.get(lo);
       Node right = root.children.get(hi);
 
+      System.out.println("left: "+ left.data);
+      System.out.println("right: "+ right.data);
       root.children.set(lo,right);
       root.children.set(hi,left);
 
@@ -85,9 +92,12 @@ class Mirror {
     
     for(int i=0;i<root.children.size();i++){
       Node child = root.children.get(i);
+      System.out.println("child: "+ child.data);
       mirror(child);
     }
 
+    // In post order the loop is reversed
+    
     // //reversing the array list
     // int lo = 0;
     // int hi = root.children.size()-1;
