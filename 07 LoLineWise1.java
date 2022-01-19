@@ -9,6 +9,7 @@
  * Add Root Children in the Child Queue
  * When MQ is empty make CQ as MQ
  * Create new CQ
+ * Time: O(n); Space: O(n)
  */
 
 import java.util.*;
