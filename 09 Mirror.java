@@ -13,7 +13,6 @@
  * int lo=0;hi=al.size()-1; left = Al.get(lo), right = Al.get(hi); Al.set(lo,left), Al.set(hi,right);
  */
 
-import java.lang.reflect.Method;
 import java.util.*;
 
 class Mirror {
@@ -96,8 +95,8 @@ class Mirror {
       mirror(child);
     }
 
-    // In post order the loop is reversed
-    
+    // In post order the root reverses its children
+
     // //reversing the array list
     // int lo = 0;
     // int hi = root.children.size()-1;

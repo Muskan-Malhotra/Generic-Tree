@@ -79,6 +79,12 @@ class RemoveLeaves {
 
 
     // ###################### Method 2 ###########################
+
+    // for(int i=0;i<root.children.size();i++){
+    //   Node getChild = root.children.get(i);
+    //   removeLeaf(getChild);
+    // }   ///OUTPUT    --> 10->.
+
     for(int i=root.children.size()-1;i>=0;i--){
       Node child = root.children.get(i);
 
