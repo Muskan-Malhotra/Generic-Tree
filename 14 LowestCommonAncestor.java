@@ -1,20 +1,13 @@
 /**
- * 13 NODE TO ROOT PATH
+ * 14 Lowest Common Ancestor
  */
 
 // ############################ ALGO ###############################
 /**
- * Similar to find.java
- * if data found on current node --
- *  ----------Create new arraylist and add data
- * Travel through the node
- * create nodetochildpath arraylist(not new one)
- * get n2cp through recurssion
- * Once the al size > 0 that means found the data
- * -----------add the ancestor of the found child as n2rp in n2cp
- * -----------return n2cp
- * else data not found
- * -----------return empty arraylist  == return new ArrayList<>();
+ * First generate the arraylist with both the data so given
+ * Traverse the arraylist from the end
+ * From AL1 and AL2 find the divergence point
+ * The most common point of divergence is the LCA
  * 
  * Time: O(n); where n is the number of nodes in tree (Have travelled all nodes just once)
  * Space: O(1)
@@ -22,7 +15,7 @@
 
 import java.util.*;
 
- class Node2RootPath{
+ class LowestCommonAncestor{
 
   public static class Node{
     int data;
@@ -74,7 +67,23 @@ import java.util.*;
     }
   }
 
-  public static ArrayList<Integer> nodeToRootPath(Node root, int data){
+  public static int LCA(Node root, int d1, int d2){
+    ArrayList<Integer> n2rp1 = Node2RP(root, d1);
+    ArrayList<Integer> n2rp2 = Node2RP(root,d2);
+
+    int ans = 0;
+    for(int i=n2rp1.size()-1,j=n2rp2.size()-1;i>=0 && j>=0;i--,j--){
+      if(n2rp1.get(i) == n2rp2.get(j)){
+        ans = n2rp1.get(i);
+      }
+    }
+    // System.out.println(n2rp1);
+    // System.out.println(n2rp2);
+    return ans;
+
+  }
+
+  public static ArrayList<Integer> Node2RP (Node root, int data){
     if(root.data == data){
       //create new arraylist
       ArrayList<Integer> al = new ArrayList<>();
@@ -84,7 +93,7 @@ import java.util.*;
 
     for(int i=0;i<root.children.size();i++){
       Node child = root.children.get(i);
-      ArrayList<Integer> n2cp = nodeToRootPath(child, data);
+      ArrayList<Integer> n2cp = Node2RP(child, data);
 
       if(n2cp.size()>0){
         //found the element
@@ -102,8 +111,9 @@ import java.util.*;
 
     Node root = construct(ar);
     // display(root);
-    int data = 120;
-    ArrayList<Integer> ans = nodeToRootPath(root,data);
+    int d1 = 120;
+    int d2 = 80;
+    int ans = LCA(root,d1,d2);
     System.out.println(ans);
   }
 
