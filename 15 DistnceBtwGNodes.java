@@ -1,13 +1,12 @@
 /**
- * 14 Lowest Common Ancestor
+ * 15 Distance Between Nodes
  */
 
 // ############################ ALGO ###############################
 /**
- * First generate the arraylist with both the data so given
- * Traverse the arraylist from the end
- * From AL1 and AL2 find the divergence point
- * The most common point of divergence is the LCA
+ * Get the two node2RootPath of the nodes
+ * Find the LCA between the two nodes
+ * Traverse till the divergence point that is LCA and incs count.
  * 
  * Time: O(n); where n is the number of nodes in tree (Have travelled all nodes just once)
  * Space: O(1)
