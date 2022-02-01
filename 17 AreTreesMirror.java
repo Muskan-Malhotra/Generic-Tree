@@ -1,9 +1,10 @@
 /**
- * 16 Are Trees Similar
+ * 16 Are Trees Mirror in Shape
  */
 
 // ############################ ALGO ###############################
 /**
+ * Similar to Are trees similar just traverse the other tree in reverse order
  * Traverse through the child nodes of both the trees.
  * Once captured check if both the child has equal number of children or not
  * I.e the size of the child nodes are same or not.
@@ -16,7 +17,7 @@
 
 import java.util.*;
 
- class AreTrees{
+ class AreTreesMirror{
 
   public static class Node{
     int data;
@@ -81,34 +82,16 @@ import java.util.*;
 
   }
   
-  public static boolean ATS(Node n1, Node n2){
-
-    //  System.out.println(n1.data+"size"+n1.children.size());
-    //  System.out.println(n2.data+"size"+n2.children.size());
-
-    int sizen1 = size(n1);
-    int sizen2 = size(n2);
-
-    if(sizen1 == 0 && sizen2 == 0){
-      return true;
-    }
-    else if(sizen1 == 0 && sizen2 > 0){
-      return false;
-    }
-    else if(sizen1 > 0 && sizen2 == 0){
-      return false;
-    }
-
-    
+  public static boolean Mirror(Node n1, Node n2){
       
-    for(int i=0,j=0;i<n1.children.size() && j<n2.children.size();i++,j++){
+    for(int i=n1.children.size()-1,j=0;i>=0 && j<n2.children.size()-1;i--,j++){
       // System.out.println(n1.data+"size"+n1.children.size());
       // System.out.println(n2.data+"size"+n2.children.size());
 
       Node child1 = n1.children.get(i);
       Node child2 = n2.children.get(j);
 
-      boolean ans = ATS(child1,child2);
+      boolean ans = Mirror(child1,child2);
 
       if(ans == false){
         return false;
@@ -127,18 +110,18 @@ import java.util.*;
 
   public static void main(String[] args) {
 
-    int[] ar1 = {10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,100,-1,-1,-1};
-    int[] ar2 = {1,2,5,-1,6,-1,-1,3,7,-1,8,11,-1,12,-1,-1,9,-1,-1,4,10,-1,-1,-1};
-    int[] sizearr = {10,20,-1,30,-1,40,-1,-1};
+    int[] ar1 = {10,20,-1,30,50,-1,60,-1,-1,40,-1,-1};
+    int[] ar2 = {100,200,-1,300,500,-1,600,-1,-1,400,-1,-1};
+    
 
     Node root1 = construct(ar1);
     Node root2 = construct(ar2);
-    Node root3 = construct(sizearr);
+    
     // display(root1);
     // display(root2);
-    boolean ans = ATS(root1,root2);
+    boolean ans = Mirror(root1,root2);
     System.out.println(ans);
-    System.out.println(size(root3));
+    
   }
 
  
