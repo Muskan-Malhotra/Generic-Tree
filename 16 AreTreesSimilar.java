@@ -66,32 +66,57 @@ import java.util.*;
       display(child);
     }
   }
+
+  public static int size(Node n){
+    int s=0;
+
+    for(int i=0;i<n.children.size();i++){
+      Node child = n.children.get(i);
+      s += size(child);
+      
+    }
+    s+=1;
+    return s;
+
+  }
   
   public static boolean ATS(Node n1, Node n2){
 
-     System.out.println(n1.data+"size"+n1.children.size());
-     System.out.println(n2.data+"size"+n2.children.size());
+    //  System.out.println(n1.data+"size"+n1.children.size());
+    //  System.out.println(n2.data+"size"+n2.children.size());
 
-    // if(n1.children.size()>0 && n2.children.size()>0){
+    int sizen1 = size(n1);
+    int sizen2 = size(n2);
 
-      for(int i=0,j=0;i<n1.children.size() && j<n2.children.size();i++,j++){
-        // System.out.println(n1.data+"size"+n1.children.size());
-        // System.out.println(n2.data+"size"+n2.children.size());
+    if(sizen1 == 0 && sizen2 == 0){
+      return true;
+    }
+    else if(sizen1 == 0 && sizen2 > 0){
+      return false;
+    }
+    else if(sizen1 > 0 && sizen2 == 0){
+      return false;
+    }
 
-        Node child1 = n1.children.get(i);
-        Node child2 = n2.children.get(j);
+    
+      
+    for(int i=0,j=0;i<n1.children.size() && j<n2.children.size();i++,j++){
+      // System.out.println(n1.data+"size"+n1.children.size());
+      // System.out.println(n2.data+"size"+n2.children.size());
 
-        boolean ans = ATS(child1,child2);
+      Node child1 = n1.children.get(i);
+      Node child2 = n2.children.get(j);
 
-        if(ans == false){
-          return false;
-        }
+      boolean ans = ATS(child1,child2);
+
+      if(ans == false){
+        return false;
       }
+    }
 
-      if(n1.children.size() == n2.children.size()){
-        return true;
-      }
-    // }
+    if(n1.children.size() == n2.children.size()){
+      return true;
+    }
 
     return false;
 
@@ -103,13 +128,16 @@ import java.util.*;
 
     int[] ar1 = {10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,100,-1,-1,-1};
     int[] ar2 = {1,2,5,-1,6,-1,-1,3,7,-1,8,11,-1,12,-1,-1,9,-1,-1,4,10,-1,-1,-1};
+    int[] sizearr = {10,20,-1,30,-1,40,-1,-1};
 
     Node root1 = construct(ar1);
     Node root2 = construct(ar2);
+    Node root3 = construct(sizearr);
     // display(root1);
     // display(root2);
     boolean ans = ATS(root1,root2);
     System.out.println(ans);
+    System.out.println(size(root3));
   }
 
  
