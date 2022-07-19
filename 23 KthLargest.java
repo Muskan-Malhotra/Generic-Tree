@@ -1,6 +1,14 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * Time Complexity:
+This approach is a naive algorithm. We are traversing the entire tree k times, by calling ceilAndFloor() for k times. Hence the total time complexity will be O(n * k) where n = number of nodes in the tree.
+
+Space Complexity:
+We are not using any auxiliary data structure, hence O(1) extra space is used. However, since we are using recursion, the recursion call stack may have O(d) space where d = maximum depth of the tree.
+ */
+
 class KthLargest {
   private static class Node {
     int data;

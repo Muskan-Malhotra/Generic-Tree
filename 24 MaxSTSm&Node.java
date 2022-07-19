@@ -3,15 +3,14 @@ import java.util.*;
 
 /**
  * Time Complexity:
-The time complexity of this solution is O(n) as we are traversing all the nodes of the tree.
+We are visiting each node exactly once, hence the total time complexity will be O(n) where n = number of nodes in the tree.
 
 Space Complexity:
-The space complexity of this solution is O(1). Again like almost every previous question, if we consider the recursion space the time complexity becomes O(logn) as the maximum height of the stack can be equal to the height of the tree i.e. O(logn).
-
-So dear reader, we hope that you have understood the entire solution. If you still have any doubts about it, you may refer to the complete solution video to clear all your doubts. With this we have completed this question.
+We are just taking two integer variables mSum and mSumNode to find the maximum subtree sum. Hence, we are taking O(1) auxiliary space.
+However, again, due to recursion, the recursion call stack will take up O(d) space where d = maximum depth of the tree.
  */
 
-class CeilAnFloor {
+class MaxSTSumandNode {
   private static class Node {
     int data;
     ArrayList<Node> children = new ArrayList<>();
@@ -53,30 +52,28 @@ class CeilAnFloor {
 
     return root;
   }
-
-  
-  static int ceil;
-  static int floor;
-  public static void ceilAndFloor(Node node, int data) {
-    // Write your code here
-   
-    System.out.println(ceil+" "+node.data);
-    if(node.data>data){
+  static int treeMax = Integer.MIN_VALUE;
+  static int data = 0;
+  public static int nodeMaxST(Node node){
+      
+      int sum = 0;
+      
+      for(Node child:node.children){
         
-        if(node.data<ceil){
-            
-            ceil = node.data;
-        }
-    }
-    if(node.data<data){
-        if(node.data>floor){
-            floor = node.data;
-        }
-    }
-    
-    for(Node child: node.children){
-        ceilAndFloor(child,data);
-    }
+        sum += nodeMaxST(child);
+          
+      }
+      
+      sum += node.data;
+      
+      if(sum>treeMax){
+          treeMax = sum;
+          data = node.data;
+      }
+      
+      
+      return sum ;
+      
   }
 
   public static void main(String[] args) throws Exception {
@@ -88,14 +85,12 @@ class CeilAnFloor {
       arr[i] = Integer.parseInt(values[i]);
     }
 
-    int data = Integer.parseInt(br.readLine());
-
     Node root = construct(arr);
-    ceil = Integer.MAX_VALUE;
-    floor = Integer.MIN_VALUE;
-    ceilAndFloor(root, data);
-    System.out.println("CEIL = " + ceil);
-    System.out.println("FLOOR = " + floor);
+    // write your code here
+    
+    nodeMaxST(root);
+    // System.out.println(ans);
+    System.out.print(data + "@"+treeMax);
   }
 
 }
