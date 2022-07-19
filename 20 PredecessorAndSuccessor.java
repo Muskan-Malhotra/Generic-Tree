@@ -1,6 +1,19 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * Time Complexity:
+O(n)
+
+The time complexity of the above solution is O(n) as we are traversing all the nodes of the tree.
+
+Space Complexity:
+O(1)
+
+The space complexity of the above solution is O(1) as we have not used any extra memory. But, if we consider the recursion space then it is O(logn) as the max height of the recursion stack will be equal to height of the tree i.e. O(logn).
+ * 
+ */
+
 
 ///////// NEW GROUP TAVEL AND CHANGE ////////////////////////////
 class PredecessorAndSuccessor {
