@@ -92,6 +92,6 @@ class SizeMacHeight {
     Node root = construct(arr);
     // boolean sym = IsSymmetric(root);
     // System.out.println(size());
-    // display(root);
+    display(root);
   }
 }
